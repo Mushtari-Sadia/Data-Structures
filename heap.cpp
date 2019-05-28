@@ -51,7 +51,6 @@ void build_max_heap(int heap[],int heap_size)
         max_heapify(heap,heap_size,i);
     }
 }
-
 void heap_sort(int heap[],int heap_size)
 {
     int i,t;
@@ -97,6 +96,7 @@ int main()
 
     heap_sort(heap,heap_size);
     cout << "\nAfter sorting : " << endl;
+    cout << "\nAfter heapifying : " << endl;
 
     for(int j=1;j<=heap_size;j++)
     {
