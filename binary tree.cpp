@@ -50,6 +50,22 @@ Node* create_tree()
     return two;
 }
 
+int heightOfTree(Node* root)
+{
+    int maxdepth;
+    if(!root)
+        return 0;
+    int lsubtree = heightOfTree(root->left);
+    int rsubtree = heightOfTree(root->right);
+    if(rsubtree>lsubtree)
+    {
+        maxdepth = rsubtree+1;
+    }
+    else
+        maxdepth = lsubtree+1;
+    return maxdepth;
+}
+
 void pre_order(Node *node)
 {
     cout << node->data << endl;
@@ -97,5 +113,7 @@ int main()
     cout << "in-order traversal : " << endl;
     in_order(root);
     cout << endl;
+
+    cout << "height of tree : " << heightOfTree(root) << endl;
 
 }

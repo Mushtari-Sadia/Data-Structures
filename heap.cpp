@@ -46,11 +46,15 @@ void max_heapify(int heap[],int heap_size,int root)
 
 void build_max_heap(int heap[],int heap_size)
 {
+    //i=heap_size/2 because we want to apply the funtion to the last
+    //root of the tree,so heap_size(index of last child)/2=index of last parent
     for(int i=heap_size/2;i>=1;i--)
     {
         max_heapify(heap,heap_size,i);
     }
 }
+
+
 void heap_sort(int heap[],int heap_size)
 {
     int i,t;
@@ -64,6 +68,19 @@ void heap_sort(int heap[],int heap_size)
         heap_size-=1;
         max_heapify(heap,heap_size,1);
     }
+}
+
+int findMinElement(int heap[],int heap_size)
+{
+    int min = heap[heap_size/2 + 1];
+    for(int i=heap_size/2 + 1;i<heap_size;i++)
+    {
+        if(heap[i]<min)
+        {
+            min = heap[i];
+        }
+    }
+    return min;
 }
 
 int main()
@@ -94,14 +111,16 @@ int main()
         cout << heap[j] << endl;
     }
 
-    heap_sort(heap,heap_size);
-    cout << "\nAfter sorting : " << endl;
-    cout << "\nAfter heapifying : " << endl;
+
+    /*heap_sort(heap,heap_size);
+    cout << "\nAfter sorting : " << endl;\
 
     for(int j=1;j<=heap_size;j++)
     {
         cout << heap[j] << endl;
-    }
+    }*/
+
+    cout << "minimum element : " << findMinElement(heap,heap_size) << endl;
 
     delete []heap;
 }
